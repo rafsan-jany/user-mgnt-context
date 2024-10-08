@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import Users from './components/Users';
 import NewUser from './components/NewUser';
+import { UsersContext } from './context/UsersContext';
 
 function App() {
 
@@ -11,21 +12,14 @@ function App() {
     {id: 2, username: 'rafsan'},
   ])
 
-  const handleDeleteUser = (id) => {
-    console.log(id)
-    const filteredUser = users.filter(user=> user.id != id)
-    setUsers(filteredUser)
-  }
-
-  const handleAddNewUser = (newUser) => {
-    setUsers((prevUsers) => [...prevUsers, newUser])
-  }
-
   return (
-    <div className="App">
-      <NewUser handleAddNewUser={handleAddNewUser} />
-      <Users users={users} handleDeleteUser={handleDeleteUser}/>
-    </div>
+    <UsersContext.Provider value= {{users, setUsers}}>
+      <div className="App">
+        <NewUser/>
+        <Users/>
+      </div>
+    </UsersContext.Provider>
+
   );
 }
 
