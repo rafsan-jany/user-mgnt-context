@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react'
-import { UsersContext } from '../context/UsersContext'
+import React, { useState } from 'react'
+import { useUsersContext } from '../hooks/useUsersContext'
 
-const NewUser = ({handleAddNewUser}) => {
-   const {users, setUsers} = useContext(UsersContext)
-   const[username, setUsername] = useState("")
+const NewUser = () => {
+//    const {users, setUsers} = useContext(UsersContext)
+
+  const {users, setUsers} = useUsersContext()
+  const [username, setUsername] = useState("");
 
   const handleUserNameChange = (event) => {
     setUsername(event.target.value)
