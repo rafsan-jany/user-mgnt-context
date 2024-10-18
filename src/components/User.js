@@ -11,6 +11,8 @@ const User = ({user}) => {
     setUsers(filteredUser)
   }
 
+  // added comment for git testing
+
 
   return (
     <article className='user'>
